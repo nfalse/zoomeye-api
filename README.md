@@ -6,7 +6,7 @@ go get github.com/nfalse/zoomeye-api
 # Reference
 As the official website, the interfaces provided encapsulation are below:
 
-+Login 
++ Login 
 login with url,username and password, get an access token. for the details, please read the official api doc: https://www.zoomeye.org/api/doc#user
 
 +ResourcesInfo
@@ -14,12 +14,12 @@ get resources info for account. for the details, please read the official api do
 
 https://www.zoomeye.org/api/doc#resources-info
 
-+ResourcesInfo
++ ResourcesInfo
 search the host devices. for the details, please read the official api doc:
 
 https://www.zoomeye.org/api/doc#host-search
 
-+WebSearch
++ WebSearch
 search the web technologies. for the details, please read the official api doc:
 
 https://www.zoomeye.org/api/doc#web-search
