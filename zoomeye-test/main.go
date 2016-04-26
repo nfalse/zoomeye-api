@@ -23,14 +23,14 @@ var g_condition *string = flag.String("condition", "query=\"port:21\"&page=1", "
 
 func main() {
 	flag.Parse()
-	token, err := zoomeye.GetToken(*g_url, *g_user, *g_password)
+	token, err := zoomeye.Login(*g_url, *g_user, *g_password)
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(-1)
 	}
 	switch *g_search_type {
 	case "host":
-		host_answer, err := zoomeye.HostGet(*g_url, *g_condition, token)
+		host_answer, err := zoomeye.HostSearch(*g_url, *g_condition, token)
 		if err != nil {
 			log.Fatal(err)
 			os.Exit(-1)
@@ -40,7 +40,7 @@ func main() {
 		}
 		break
 	case "web":
-		web_answer, err := zoomeye.WebGet(*g_url, *g_condition, token)
+		web_answer, err := zoomeye.WebSearch(*g_url, *g_condition, token)
 		if err != nil {
 			log.Fatal(err)
 			os.Exit(-1)
@@ -48,6 +48,14 @@ func main() {
 		for _, item := range web_answer.Matches {
 			fmt.Println(item)
 		}
+		break
+	case "info":
+		answer, err := zoomeye.ResourcesInfo(*g_url, token)
+		if err != nil {
+			log.Fatal(err)
+			os.Exit(-1)
+		}
+		fmt.Println(answer)
 		break
 	default:
 		os.Exit(-1)

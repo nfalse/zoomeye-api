@@ -154,7 +154,7 @@ type WebtAnswer struct {
 	Total int `json:"total"`
 }
 
-func GetToken(url, user, password string) (token Token, err error) {
+func Login(url, user, password string) (token Token, err error) {
 	var _user User
 	_user.Username = user
 	_user.Password = password
@@ -200,7 +200,7 @@ func ConditionGet(url, search_type, condition string, token Token) (result []byt
 	}
 	return
 }
-func HostGet(url, condition string, token Token) (answer HostAnswer, err error) {
+func HostSearch(url, condition string, token Token) (answer HostAnswer, err error) {
 	result, err := ConditionGet(url, "host", condition, token)
 	if err != nil {
 		return
@@ -211,7 +211,7 @@ func HostGet(url, condition string, token Token) (answer HostAnswer, err error) 
 	}
 	return
 }
-func WebGet(url, condition string, token Token) (answer WebtAnswer, err error) {
+func WebSearch(url, condition string, token Token) (answer WebtAnswer, err error) {
 	result, err := ConditionGet(url, "web", condition, token)
 	if err != nil {
 		return
@@ -220,5 +220,25 @@ func WebGet(url, condition string, token Token) (answer WebtAnswer, err error) {
 	if err != nil {
 		return
 	}
+	return
+}
+func ResourcesInfo(url string, token Token) (result string, err error) {
+	reqest, err := http.NewRequest("GET", url+"/resources-info", nil)
+	if err != nil {
+		return
+	}
+	reqest.Header.Set("Authorization", "JWT "+token.AccessToken)
+	reqest.Header.Set("User-Agent", uagent)
+	client := &http.Client{}
+	response, err := client.Do(reqest)
+	defer response.Body.Close()
+	if err != nil {
+		return
+	}
+	b, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		return
+	}
+	result = string(b)
 	return
 }
