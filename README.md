@@ -8,17 +8,18 @@ As the official website, the interfaces provided encapsulation are below:
 
 + Login
 
-login with url,username and password, get an access token. for the details, please read the official api doc: https://www.zoomeye.org/api/doc#user
-
-+ResourcesInfo
-
-get resources info for account. for the details, please read the official api doc:
-https://www.zoomeye.org/api/doc#resources-info
+  login with url,username and password, get an access token. for the details, please read the official api doc:
+  https://www.zoomeye.org/api/doc#user
 
 + ResourcesInfo
 
-search the host devices. for the details, please read the official api doc:
-https://www.zoomeye.org/api/doc#host-search
+  get resources info for account. for the details, please read the official api doc:
+  https://www.zoomeye.org/api/doc#resources-info
+
++ HostSearch
+
+  search the host devices. for the details, please read the official api doc:
+  https://www.zoomeye.org/api/doc#host-search
 
 + WebSearch
 
