@@ -8,8 +8,7 @@ As the official website, the interfaces provided encapsulation are below:
 
 + Login
 
-  login with url,username and password, get an access token. for the details, please read the official api doc:
-  https://www.zoomeye.org/api/doc#user
+  login with url,username and password, get an access token. for the details, please read the official api doc:https://www.zoomeye.org/api/doc#user
 
 + ResourcesInfo
 
